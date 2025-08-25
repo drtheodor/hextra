@@ -10,7 +10,7 @@
 }
 
 .hextra-opt-sidebar-item {
-  @apply hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word];
+  @apply hx:flex hx:items-center hx:justify-between hx:gap-2 hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colorsЫ;
   word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
