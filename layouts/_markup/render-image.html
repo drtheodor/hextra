@@ -23,6 +23,20 @@
     {{/* Images that are sibling to the individual page file */}}
     {{ $dest = (printf "../%s" $dest) }}
   {{- end -}}
+  
+  {{- with or (.Page.Resources.Get $dest) (resources.Get $dest) -}}
+    {{/* .Process does not work on svgs */}}
+    {{- if (not (eq .MediaType.SubType "svg")) -}}
+      {{/* Retrieve the $image resource from local or global resources */}}
+      {{- $processed := .Process "webp" -}}
+      {{- $dest = $processed.RelPermalink -}}
+    {{- end -}}
+  {{ else }}
+    {{/* Otherwise, use relative link of the image */}}
+    {{- if hasPrefix $dest "/" -}}
+      {{- $dest = relURL (strings.TrimPrefix "/" $dest) -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $attributes := "" -}}
