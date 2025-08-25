@@ -31,11 +31,6 @@
       {{- $processed := .Process "webp" -}}
       {{- $dest = $processed.RelPermalink -}}
     {{- end -}}
-  {{ else }}
-    {{/* Otherwise, use relative link of the image */}}
-    {{- if hasPrefix $dest "/" -}}
-      {{- $dest = relURL (strings.TrimPrefix "/" $dest) -}}
-    {{- end -}}
   {{- end -}}
 {{- end -}}
 
