@@ -1,0 +1,28 @@
+name: Build CSS
+on:
+  push:
+    paths:
+      - assets/css/**
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
+      - name: Setup Node.js 20
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 20.x
+          cache: npm
+      - name: Install npm development dependencies
+        run: npm i
+      - name: Build action
+        run: npm run dev:theme
+      - name: Commit and push action bundle
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9
+        with:
+          add: .
+          message: 'chore(dist): build'
+          author_name: github-actions[bot]
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
